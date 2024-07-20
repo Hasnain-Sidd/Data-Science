@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
+from PIL import Image
 
 def Line_Plot(path):
     df=pd.read_csv(path)
@@ -53,7 +54,13 @@ def Bar_Graph(path):
      ax.set_title("Virat Kohli ODI AVG/SR")
      ax.set_xticks(Teams)
      ax.set_xticklabels(df["Opponents"],fontsize=10,rotation=45)
-     fig.patch.set_facecolor('gray')  
+     fig.patch.set_facecolor('gray') 
+     Image_Path="C:\\Users\\PMLS\\Downloads\\download.jpg"
+     Img=Image.open(Image_Path) 
+     img_array=np.asarray(Img)
+     inset_ax = fig.add_axes([0.90, 0.3, 0.1, 1.0])  # [left, bottom, width, height]
+     inset_ax.imshow(img_array)
+     inset_ax.axis('off')
      ax.set_facecolor('lightyellow') 
      ax.bar(Teams-0.2,Strike_Rate,color='blue',width=0.4,label="SR")
      ax.bar(Teams+0.2,Avg,color='orange',width=0.4,label="Avg")
@@ -82,10 +89,10 @@ def Pie_Charts(path):
 
 
 
-path="C:\\Users\\PMLS\\Desktop\\Virat_Kohli.csv"
+path="C:\\Users\\PMLS\\Desktop\\Data_Sets\\Virat_Kohli.csv"
 #Line_Plot(path=path)
-Pie_Charts(path=path)
+#Pie_Charts(path=path)
 #Match_Scorcard()
 #Bar_Graph(path=path)
-#arr=np.array([99.5,104.5,109.5,114.5,119.5,124.5,129.5,134.5])
-#Histogram(arr=arr)
+arr=np.array([99.5,104.5,109.5,114.5,119.5,124.5,129.5,134.5])
+Histogram(arr=arr)

@@ -13,8 +13,8 @@ def Read_CSV(path):
 
 def create_df(dict):
     df=pd.DataFrame(dict)
+    df=df.rename(columns={'Name':"Cricketer Name"})
     print(df)
-    print(df[1:4])
 
 def ops_csv(path):
     df=pd.read_csv(path,nrows=5,na_values=[0])#--> na_values equals all values of zeroes to NAN values
@@ -28,6 +28,7 @@ def Read_Excel(path):
 def read_csv(path):
     df=pd.read_csv(path,parse_dates=["Span"])
     print(df[df["Span"]>2010 & df["Span"]<2019])
+    
 def Group_By(path):
     df=pd.read_excel(path)
     
@@ -51,7 +52,14 @@ path2="C:\\Users\\PMLS\\Desktop\\Ticket_Sales.xlsx"
 dict={"Name":["Babar Azam","Klaasen","Buttler","Virat","Rohit"],"Matches":[110,76,154,251,231],"Odi Avg":[56.87,49.91,44.32,54.32,48.98],
       "Strike Rate":[93.21,120.21,110.56,92.23,98.71],"HS":[158,174,143,183,264]}
 #create_df(dict=dict)
+
 #ops_csv(path=path)
 #Read_Excel(path=path1)
 #read_csv(path=path)
-Group_By(path=path2)
+#Group_By(path=path2)
+
+list=[[1,2],[5,9],[10,32],[71,43]]
+df=pd.DataFrame(list,columns=['student_id','age'])
+#print(df)
+df.replace(2,5,inplace=True)
+print(df)
